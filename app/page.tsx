@@ -19,15 +19,15 @@ const risBenefits = [
   },
   {
     title: "Stap voor stap",
-    text: "Van de basis tot lastige situaties in het verkeer — in een logische volgorde die je bij kunt houden.",
+    text: "Van de eerste meters tot lastige situaties in Apeldoorn — in een volgorde die je bij kunt houden.",
   },
   {
-    title: "Inzicht via je cijferkaart",
-    text: "Na elke les zie je wat goed ging en waar je de volgende keer aan werkt. Zo blijf je gemotiveerd.",
+    title: "Cijfers na elke les",
+    text: "Je ziet meteen wat goed ging en waar je de volgende keer aan werkt. Zo blijf je scherp.",
   },
   {
     title: "Klaar voor het verkeer",
-    text: "Je leert niet alleen voor het examen, maar om zelfstandig en veilig mee te rijden.",
+    text: "Je leert niet alleen voor het CBR, maar om zelfstandig en veilig mee te rijden.",
   },
 ] as const;
 
@@ -35,7 +35,7 @@ const steps = [
   {
     n: "01",
     title: "Gratis proefles",
-    text: "Maak kennis met René en de lesauto. Zo weet je meteen of het klikt — zonder verplichtingen.",
+    text: "Stap in bij René. Je merkt meteen of het klikt — zonder verplichtingen.",
   },
   {
     n: "02",
@@ -45,28 +45,28 @@ const steps = [
   {
     n: "03",
     title: "Lessen met RIS",
-    text: "Je volgt een duidelijk traject. Na elke les krijg je cijfers, zodat je zelf doelen kunt stellen.",
+    text: "Elke les een duidelijk doel. Elke les cijfers. Jij ziet waar je staat.",
   },
   {
     n: "04",
     title: "Praktijkexamen",
-    text: "Goed voorbereid naar het CBR. René begeleidt je tot en met die dag.",
+    text: "Goed voorbereid naar het CBR in Apeldoorn. René gaat mee tot die dag.",
   },
 ] as const;
 
 const faq = [
   {
     question: "Wat kost een rijles?",
-    answer: `Een rijles van ${siteConfig.lessonDuration} kost ${siteConfig.lessonPrice}. Het praktijkexamen kost ${siteConfig.examPrice}.`,
+    answer: `Een rijles van 60 minuten kost ${siteConfig.lessonPrice}. Het praktijkexamen kost ${siteConfig.examPrice}.`,
   },
   {
     question: "Kan ik eerst een proefles doen?",
     answer:
-      "Ja, de proefles is gratis. Je maakt kennis met René, de lesauto en zijn manier van lesgeven — zonder verplichtingen.",
+      "Ja. De proefles is gratis. Je maakt kennis met René, de lesauto en zijn manier van lesgeven — zonder verplichtingen.",
   },
   {
     question: "Wat houdt het actiepakket in?",
-    answer: `De eerste ${siteConfig.introPackageLessons} rijlessen plus het praktijkexamen voor ${siteConfig.introPackagePrice}. Ideaal als je overzichtelijk wilt starten.`,
+    answer: `De eerste ${siteConfig.introPackageLessons} rijlessen plus het praktijkexamen voor slechts ${siteConfig.introPackagePrice}.`,
   },
   {
     question: "Wat is de RIS-methode?",
@@ -75,11 +75,39 @@ const faq = [
   },
   {
     question: "Hoe zeg ik een les af?",
-    answer: `Kun je er niet zijn? Bel of app dan minimaal ${siteConfig.cancellationHours} uur van tevoren. Zo kan René de les nog aan een andere leerling geven.`,
+    answer: `Bij verhindering van een les minimaal ${siteConfig.cancellationHours} uur van tevoren afbellen. Zo kan René de les nog aan een andere leerling geven.`,
   },
   {
     question: "Waar geef je les?",
     answer: `In ${siteConfig.regionDescription}. Ophalen en terugbrengen gebeurt in overleg.`,
+  },
+] as const;
+
+const gallery = [
+  {
+    src: "/images/gallery/rene-thumbs.jpg",
+    alt: "Leerling bij de lesauto van Rijschool René van der Vegt",
+    caption: "Klaar voor de les",
+  },
+  {
+    src: "/images/gallery/geslaagd-max.jpg",
+    alt: "Geslaagd: Max Voorberg bij de lesauto van René van der Vegt",
+    caption: "Geslaagd — Max Voorberg",
+  },
+  {
+    src: "/images/gallery/geslaagd-1.jpg",
+    alt: "Geslaagde leerling naast de Volkswagen Golf van René",
+    caption: "Geslaagd in Apeldoorn",
+  },
+  {
+    src: "/images/gallery/lesauto-zilver.jpg",
+    alt: "Geslaagde leerling bij de Volkswagen Golf van René van der Vegt",
+    caption: "Geslaagd bij René",
+  },
+  {
+    src: "/images/gallery/geslaagd-2.jpg",
+    alt: "Geslaagde leerling achter de lesauto van Rijschool van der Vegt",
+    caption: "Weer een rijbewijs erbij",
   },
 ] as const;
 
@@ -122,15 +150,14 @@ export default function Home() {
             alt={siteConfig.name}
             width={220}
             height={46}
-            priority
+            preload
           />
         </a>
         <nav className="desktop-nav" aria-label="Hoofdnavigatie">
-          <a href="#over">Over</a>
+          <a href="#over">Over René</a>
           <a href="#prijzen">Prijzen</a>
+          <a href="#geslaagd">Geslaagd</a>
           <a href="#ris">RIS</a>
-          <a href="#lesauto">Lesauto</a>
-          <a href="#reviews">Reviews</a>
           <a href="#contact">Contact</a>
         </nav>
         <a className="button button-small header-cta" href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
@@ -143,119 +170,119 @@ export default function Home() {
             <span />
           </summary>
           <nav aria-label="Mobiele navigatie">
-            <a href="#over">Over</a>
+            <a href="#over">Over René</a>
             <a href="#prijzen">Prijzen</a>
+            <a href="#geslaagd">Geslaagd</a>
             <a href="#ris">RIS</a>
-            <a href="#lesauto">Lesauto</a>
-            <a href="#reviews">Reviews</a>
             <a href="#contact">Contact</a>
           </nav>
         </details>
       </header>
 
       <main id="top">
+        <aside className="promo-bar" aria-label="Acties">
+          <p>
+            <strong>Actie</strong>
+            De eerste 10 rijlessen + praktijkexamen voor slechts {siteConfig.introPackagePrice}
+          </p>
+          <p>
+            <strong>Theorie</strong>
+            Haal voor je 10e rijles je theorie en ontvang 1 gratis les!
+          </p>
+        </aside>
+
         <section className="hero" aria-labelledby="hero-title">
-          <Image
-            className="hero-image"
-            src="/images/road-hero.jpg"
-            alt="Weg door Apeldoorn en omgeving"
-            fill
-            sizes="100vw"
-            priority
-          />
-          <div className="hero-overlay" />
-          <div className="hero-content">
-            <Image
-              className="hero-plate"
-              src="/images/logo-original.png"
-              alt={siteConfig.name}
-              width={340}
-              height={72}
-              priority
-            />
+          <div className="hero-copy">
+            <p className="hero-kicker">Autorijschool in Apeldoorn · sinds {siteConfig.foundedYear}</p>
             <h1 id="hero-title">
-              Persoonlijk naar
-              <br />
-              je rijbewijs.
+              Rijles bij <em>René</em>.
             </h1>
-            <p>
-              Rijlessen van René in {siteConfig.city}: {siteConfig.lessonPrice} per{" "}
-              {siteConfig.lessonDuration.toLowerCase()}, een gratis proefles en begeleiding via de
-              RIS-methode.
+            <p className="hero-lead">
+              Geen anonieme rijschool. Sinds {siteConfig.foundedYear} haalt René leerlingen op in{" "}
+              {siteConfig.city} — één op één, in zijn Golf. Gezellig, duidelijk, en na elke les je
+              cijfers.
             </p>
             <div className="hero-buttons">
               <a className="button button-accent" href={siteConfig.signupUrl} target="_blank" rel="noreferrer">
-                Plan gratis proefles
+                Plan een gratis proefles
               </a>
-              <a className="text-link light-link" href={siteConfig.phoneHref}>
+              <a className="text-link" href={siteConfig.phoneHref}>
                 Bel {siteConfig.phoneDisplay}
               </a>
             </div>
+            <ul className="hero-facts">
+              <li>
+                <strong>{siteConfig.lessonPrice}</strong>
+                <span>per les 60 min.</span>
+              </li>
+              <li>
+                <strong>Gratis</strong>
+                <span>proefles</span>
+              </li>
+              <li>
+                <strong>{siteConfig.rating} ★</strong>
+                <span>{siteConfig.reviewCount} Google reviews</span>
+              </li>
+            </ul>
           </div>
-        </section>
-
-        <section className="trust-strip" aria-label="Kerngegevens">
-          <div>
-            <strong>Sinds {siteConfig.foundedYear}</strong>
-            <span>ervaren begeleiding</span>
-          </div>
-          <div>
-            <strong>{siteConfig.lessonPrice}</strong>
-            <span>{siteConfig.lessonDuration} per les</span>
-          </div>
-          <div>
-            <strong>{siteConfig.rating} ★</strong>
-            <span>{siteConfig.reviewCount} Google reviews</span>
-          </div>
-          <div>
-            <strong>Gratis</strong>
-            <span>proefles</span>
+          <div className="hero-photo">
+            <Image
+              src="/images/lesauto-golf.jpg"
+              alt="Zwarte Volkswagen Golf van René van der Vegt met dakbord R.vanderVEGT en L-teken"
+              fill
+              sizes="(max-width: 860px) 100vw, 48vw"
+              preload
+            />
+            <p className="hero-photo-caption">De lesauto van René — Volkswagen Golf</p>
           </div>
         </section>
 
         <section className="section about-section" id="over">
+          <div className="about-photos">
+            <figure className="about-portrait">
+              <Image
+                src="/images/rene.jpg"
+                alt="René van der Vegt bij zijn lesauto"
+                width={278}
+                height={264}
+              />
+              <figcaption>René van der Vegt</figcaption>
+            </figure>
+            <figure className="about-car">
+              <Image
+                src="/images/rene-en-auto.jpg"
+                alt="Eerdere lesauto van Rijschool R. van der Vegt met kenteken R-VD-VEGT"
+                width={500}
+                height={331}
+              />
+              <figcaption>Herkenbaar in Apeldoorn sinds {siteConfig.foundedYear}</figcaption>
+            </figure>
+          </div>
           <div className="about-copy">
             <span className="eyebrow">Over de rijschool</span>
-            <h2>Duidelijk lesgeven. Eerlijk bijhouden.</h2>
+            <h2>Eén instructeur. Jouw tempo. Eerlijke cijfers.</h2>
             <p className="lead">
-              René geeft prettig en helder les in {siteConfig.city}. Na elke les krijg je cijfers,
-              zodat je zelf ziet waar je staat — en wat de volgende stap is.
+              René geeft les zoals hij zelf graag les had willen krijgen: rustig als dat nodig is,
+              scherp als je verder wilt. Geen drukte, wel structuur.
             </p>
             <p>
-              Sinds {siteConfig.foundedYear} helpt hij leerlingen aan hun rijbewijs: rustig als dat
-              nodig is, duidelijk als je verder wilt. Geen drukte, wel structuur. Kun je er een keer
-              niet zijn? Meld je dan minimaal {siteConfig.cancellationHours} uur van tevoren af.
+              Sinds {siteConfig.foundedYear} rijdt hij met leerlingen door {siteConfig.regionDescription}.
+              Je krijgt les volgens de RIS-methode — Rijopleiding In Stappen — en na elke les een
+              cijferkaart. Zo zie je zelf waar je staat, en wat de volgende stap is.
             </p>
             <blockquote>
-              “Na elke les krijg je cijfers, waardoor je zelf doelen kan stellen.”
-              <cite>Freek Teunen</cite>
+              “René is een gezellige rij-instructeur waardoor ik elke keer weer uitkeek naar een
+              rijles.”
+              <cite>Wendy</cite>
             </blockquote>
           </div>
-          <aside className="about-facts" aria-label="In het kort">
-            <div>
-              <strong>Sinds {siteConfig.foundedYear}</strong>
-              <span>Rijlessen in {siteConfig.regionDescription}</span>
-            </div>
-            <div>
-              <strong>RIS-methode</strong>
-              <span>Stap voor stap, met cijferkaart na elke les</span>
-            </div>
-            <div>
-              <strong>Gratis proefles</strong>
-              <span>Kennismaken zonder verplichtingen</span>
-            </div>
-            <div>
-              <strong>{siteConfig.lessonPrice}</strong>
-              <span>Per les van {siteConfig.lessonDuration.toLowerCase()}</span>
-            </div>
-          </aside>
         </section>
 
         <section className="section pricing-section" id="prijzen">
           <div className="section-heading">
             <div>
               <span className="eyebrow">Prijzen</span>
-              <h2>Heldere tarieven. Geen verrassingen.</h2>
+              <h2>Helder. Geen kleine lettertjes.</h2>
             </div>
             <p>
               Begin met een gratis proefles. Daarna kies je losse lessen of het actiepakket met
@@ -263,41 +290,65 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="pricing-spotlight">
-            <div className="pricing-spotlight-copy">
-              <span className="eyebrow">Actiepakket</span>
-              <h3>
-                {siteConfig.introPackageLessons} rijlessen + praktijkexamen
-              </h3>
+          <div className="price-grid">
+            <article className="price-card featured">
+              <span className="price-label">Actie</span>
+              <h3>10 rijlessen + praktijkexamen</h3>
+              <p className="price-amount">{siteConfig.introPackagePrice}</p>
               <p>
-                De eerste {siteConfig.introPackageLessons} rijlessen én je praktijkexamen voor{" "}
-                {siteConfig.introPackagePrice}. Tip: haal je theorie vóór je tiende les — dan krijg
-                je één les gratis.
+                De eerste 10 rijlessen + praktijkexamen voor slechts {siteConfig.introPackagePrice}.
+                Tip: haal voor je 10e rijles je theorie en ontvang 1 gratis les.
               </p>
-              <a className="button button-accent" href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
+              <a className="button button-ink" href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
                 Vraag dit pakket aan
               </a>
-            </div>
-            <div className="pricing-spotlight-price" aria-label="Actieprijs">
-              <span>Actieprijs</span>
-              <strong>{siteConfig.introPackagePrice}</strong>
-              <small>10 lessen + examen</small>
-            </div>
+            </article>
+            <article className="price-card">
+              <span className="price-label">Losse les</span>
+              <h3>60 minuten</h3>
+              <p className="price-amount">{siteConfig.lessonPrice}</p>
+              <p>€ 65,- per les 60 min. Ophalen en terugbrengen in overleg.</p>
+            </article>
+            <article className="price-card">
+              <span className="price-label">Examen</span>
+              <h3>Praktijkexamen</h3>
+              <p className="price-amount">{siteConfig.examPrice}</p>
+              <p>Praktijkexamen: € 325,-. René begeleidt je tot en met die dag.</p>
+            </article>
+            <article className="price-card">
+              <span className="price-label">Kennismaken</span>
+              <h3>Proefles</h3>
+              <p className="price-amount">Gratis</p>
+              <p>Gratis proefles. Bel of app — dan plannen we een moment.</p>
+            </article>
           </div>
+        </section>
 
-          <div className="rate-row">
-            <div>
-              <span>Losse les · 60 min</span>
-              <strong>{siteConfig.lessonPrice}</strong>
+        <section className="gallery-section" id="geslaagd">
+          <div className="section">
+            <div className="section-heading">
+              <div>
+                <span className="eyebrow">Geslaagd</span>
+                <h2>Gezichten bij de Golf.</h2>
+              </div>
+              <p>
+                Na het examen een foto bij de lesauto — zo viert René het. Meer foto’s staan op
+                Facebook.
+              </p>
             </div>
-            <div>
-              <span>Praktijkexamen</span>
-              <strong>{siteConfig.examPrice}</strong>
+            <div className="gallery-grid">
+              {gallery.map((item) => (
+                <figure key={item.src}>
+                  <div className="gallery-frame">
+                    <Image src={item.src} alt={item.alt} fill sizes="(max-width: 860px) 50vw, 20vw" />
+                  </div>
+                  <figcaption>{item.caption}</figcaption>
+                </figure>
+              ))}
             </div>
-            <div>
-              <span>Proefles</span>
-              <strong>Gratis</strong>
-            </div>
+            <a className="button button-ghost" href={siteConfig.facebookUrl} target="_blank" rel="noreferrer">
+              Meer foto’s op Facebook
+            </a>
           </div>
         </section>
 
@@ -359,12 +410,11 @@ export default function Home() {
               <span className="eyebrow">De lesauto</span>
               <h2>Lessen in een Volkswagen Golf.</h2>
               <p className="lead">
-                René rijdt in een zwarte Golf met instructeursspiegels en het herkenbare dakbord.
-                Zo herken je de rijschool in {siteConfig.city} — en zit je comfortabel tijdens elke
-                les.
+                René rijdt in een Golf met instructeursspiegels en het herkenbare dakbord. Zo
+                herken je de rijschool in {siteConfig.city} — en zit je comfortabel tijdens elke les.
               </p>
               <ul className="check-list">
-                <li>Zwarte Volkswagen Golf met L-bord</li>
+                <li>Volkswagen Golf met L-bord</li>
                 <li>Extra spiegels voor veilige begeleiding</li>
                 <li>Ophalen en terugbrengen in overleg</li>
               </ul>
@@ -372,19 +422,6 @@ export default function Home() {
                 Plan je proefles
               </a>
             </div>
-          </div>
-        </section>
-
-        <section className="photo-statement">
-          <Image src="/images/road-detail.jpg" alt="" fill sizes="100vw" />
-          <div className="photo-statement-overlay" />
-          <div className="section photo-statement-copy">
-            <span className="eyebrow light">Lesgebied</span>
-            <h2>{siteConfig.regionDescription}.</h2>
-            <p>
-              Twijfel je of René ook bij jou in de buurt ophaalt? App of bel even — dan kijken we
-              het samen na.
-            </p>
           </div>
         </section>
 
@@ -459,6 +496,9 @@ export default function Home() {
               <a className="button button-outline" href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
                 WhatsApp
               </a>
+              <a className="button button-outline" href={siteConfig.emailHref}>
+                {siteConfig.email}
+              </a>
             </div>
             <dl className="business-details">
               <div>
@@ -470,15 +510,22 @@ export default function Home() {
                 </dd>
               </div>
               <div>
+                <dt>Telefoon</dt>
+                <dd>
+                  <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
+                </dd>
+              </div>
+              <div>
                 <dt>E-mail</dt>
                 <dd>
                   <a href={siteConfig.emailHref}>{siteConfig.email}</a>
                 </dd>
               </div>
               <div>
-                <dt>Vast</dt>
+                <dt>Afmelden</dt>
                 <dd>
-                  <a href={siteConfig.phoneLandlineHref}>{siteConfig.phoneLandlineDisplay}</a>
+                  Bij verhindering van een les minimaal {siteConfig.cancellationHours} uur van
+                  tevoren afbellen.
                 </dd>
               </div>
             </dl>
@@ -497,8 +544,8 @@ export default function Home() {
           </p>
           <nav className="footer-links" aria-label="Voettekst">
             <a href="#prijzen">Prijzen</a>
+            <a href="#geslaagd">Geslaagd</a>
             <a href="#ris">RIS</a>
-            <a href="#lesauto">Lesauto</a>
             <a href="#contact">Contact</a>
           </nav>
         </div>

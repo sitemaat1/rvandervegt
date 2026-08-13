@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
-import { DM_Sans, Space_Grotesk } from "next/font/google";
+import { Fraunces, Outfit } from "next/font/google";
 import {
   SITEMAAT_BANNER_HEIGHT,
   SitemaatBanner,
@@ -8,14 +8,15 @@ import {
 import "./globals.css";
 import { siteConfig } from "./site-config";
 
-const display = Space_Grotesk({
+const display = Fraunces({
   subsets: ["latin"],
   weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-display",
   display: "swap",
 });
 
-const body = DM_Sans({
+const body = Outfit({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-body",
@@ -38,8 +39,8 @@ export async function generateMetadata(): Promise<Metadata> {
     }
   }
 
-  const socialImage = new URL("/images/road-hero.jpg", siteUrl).toString();
-  const description = `Persoonlijke rijlessen in ${siteConfig.regionDescription}. ${siteConfig.lessonPrice} per ${siteConfig.lessonDuration.toLowerCase()}, gratis proefles en begeleiding via de RIS-methode. Sinds ${siteConfig.foundedYear}.`;
+  const socialImage = new URL("/images/lesauto-golf.jpg", siteUrl).toString();
+  const description = `Rijles bij René in ${siteConfig.city}. ${siteConfig.lessonPrice} per les van 60 minuten, gratis proefles en begeleiding via de RIS-methode. Sinds ${siteConfig.foundedYear}.`;
 
   return {
     metadataBase: siteUrl,
@@ -55,13 +56,13 @@ export async function generateMetadata(): Promise<Metadata> {
       title: siteConfig.name,
       description,
       siteName: siteConfig.name,
-      images: [{ url: socialImage, width: 1536, height: 1024, alt: siteConfig.name }],
+      images: [{ url: socialImage, width: 768, height: 1024, alt: siteConfig.name }],
     },
   };
 }
 
 export const viewport: Viewport = {
-  themeColor: "#0f1720",
+  themeColor: "#102a43",
   width: "device-width",
   initialScale: 1,
 };
